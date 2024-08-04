@@ -1,6 +1,37 @@
 import "./App.css";
 import profilePicture from "./profile-picture.jpg";
 
+const mySkill = [
+  {
+    skill: "HTML+CSS",
+    color: "red",
+  },
+  {
+    skill: "Javascript",
+    color: "skyblue",
+  },
+  {
+    skill: "Git+Github",
+    color: "yellow",
+  },
+  {
+    skill: "Python",
+    color: "pink",
+  },
+  {
+    skill: "SQL",
+    color: "aquamarine",
+  },
+  {
+    skill: "React",
+    color: "firebrick",
+  },
+  {
+    skill: "MariaDB",
+    color: "gray",
+  },
+];
+
 export default function App() {
   return (
     <div className="card">
@@ -10,15 +41,7 @@ export default function App() {
         {/* Should contain one Skill component
         for each web dev skill that you have,
         customized with props */}
-        <ul className="skill-list">
-          <SkillList color="red" skill="HTML+CSS" />
-          <SkillList color="skyblue" skill="Javscript" />
-          <SkillList color="yellow" skill="Git+Github" />
-          <SkillList color="pink" skill="Python" />
-          <SkillList color="aquamarine" skill="SQL" />
-          <SkillList color="firebrick" skill="React" />
-          <SkillList color="gray" skill="MariaDB" />
-        </ul>
+        <SkillList />
       </div>
     </div>
   );
@@ -41,10 +64,18 @@ function Intro() {
   );
 }
 
-function SkillList(props) {
+function SkillList() {
   return (
-    <li className="skill" style={{ backgroundColor: props.color }}>
-      {props.skill} 👍
-    </li>
+    <ul className="skill-list">
+      {mySkill.map((eachSkill, i) => (
+        <li
+          className="skill"
+          key={i}
+          style={{ backgroundColor: eachSkill.color }}
+        >
+          {eachSkill.skill}
+        </li>
+      ))}
+    </ul>
   );
 }
